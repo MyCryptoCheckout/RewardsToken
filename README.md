@@ -2,7 +2,7 @@
 
 The Rewards Token (RWD) is an [EIP20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md) token with additional functionality.
 
-The total supply of the token is 100,000,000 and each token is divisible up to 18 decimal places.
+The initial supply of the token is 100,000,000 and each token is divisible up to 18 decimal places.
 
 ## Details
 
