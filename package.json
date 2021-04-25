@@ -1,0 +1,16 @@
+{
+  "name": "rewards",
+  "version": "1.0.0",
+  "description": "rewards token",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jjs2484",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.0.0",
+    "truffle": "^5.3.2",
+    "truffle-flattener": "^1.5.0"
+  }
+}
