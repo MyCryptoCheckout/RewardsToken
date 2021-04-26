@@ -1,13 +1,13 @@
-# RewardsToken
+# Rewards Token
 
-The Rewards Token (RWD) is an [EIP20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md) token with additional functionality.
+The Rewards Token (RWD) is an [EIP20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md) token with additional functionality including minting and burning.
 
 The initial supply of the token is 100,000,000 and each token is divisible up to 18 decimal places.
 
 ## Details
 
 - Deployments:
-  - Ethereum Mainnet (./contracts/RewardsToken.sol)
+  - Ethereum Mainnet (./contracts/RewardsToken.sol): [0xD80F72a6558ec337E0d4CF76b8752B17FA770860] (https://etherscan.io/address/0xd80f72a6558ec337e0d4cf76b8752b17fa770860)
 - Decimals: 18
 - Name: Rewards Token
 - Symbol: RWD
@@ -23,19 +23,5 @@ npm install
 For etherscan verification
 
 ```bash
-npx truffle-flattener ./contracts/RewardsToken.sol > ./contracts/RewardsTokenFlattened.sol
-```
-
-## remixd for remix IDE
-
-To give the Remix IDE (the web app) access to a folder on your computer, you need to use Remixd -
-
-```bash
-npm install -g @remix-project/remixd
-```
-
-If your browser is on https://remix.ethereum.org (secure http) then use https in the command:
-
-```bash
-remixd -s <absolute-path-to-the-shared-folder> --remix-ide https://remix.ethereum.org
+npm run flatten
 ```

@@ -4,7 +4,7 @@
   "description": "rewards token",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "flatten": "npx truffle-flattener ./contracts/RewardsToken.sol > ./contracts/RewardsTokenFlattened.sol"
   },
   "author": "jjs2484",
   "license": "MIT",
