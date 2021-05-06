@@ -6,14 +6,14 @@ The initial supply of the token is 100,000,000 and each token is divisible up to
 
 ## Details
 
+- Name: Rewards
+- Symbol: RWD
+- Decimals: 18
 - Deployments:
   - Ethereum Mainnet (./contracts/RewardsToken.sol): [0xD80F72a6558ec337E0d4CF76b8752B17FA770860] (https://etherscan.io/address/0xd80f72a6558ec337e0d4cf76b8752b17fa770860)
   - ERC20 Bridge : [0x06480810B00323BBBCF9f13901217386dd508dF7] (https://etherscan.io/address/0x06480810B00323BBBCF9f13901217386dd508dF7)
   - Binance Smart Chain Mainnet (./contracts/BEP20Token.sol): [0x036BDd5bA9619ee0A895f8DC02867EBF453CB352] (https://bscscan.com/address/0x036bdd5ba9619ee0a895f8dc02867ebf453cb352)
   - BEP20 Bridge : [0x036BDd5bA9619ee0A895f8DC02867EBF453CB352] (https://bscscan.com/address/0x036bdd5ba9619ee0a895f8dc02867ebf453cb352)
-- Decimals: 18
-- Name: Rewards Token
-- Symbol: RWD
 
 ## Installation
 
