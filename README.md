@@ -1,4 +1,4 @@
-# Rewards Token
+# Rewards (RWD)
 
 Rewards (RWD) is an Bridged [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) / [BEP20](https://github.com/binance-chain/BEPs/blob/master/BEP20.md) token with additional functionality including minting and burning.
 
