@@ -2,7 +2,7 @@
 
 Rewards (RWD) is an Bridged [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) / [BEP20](https://github.com/binance-chain/BEPs/blob/master/BEP20.md) token with additional functionality including minting and burning.
 
-The initial supply of the token is 100,000,000 and each token is divisible up to 18 decimal places.
+The max supply of the token is 500,000,000 and each token is divisible up to 18 decimal places.
 
 ## Details
 
