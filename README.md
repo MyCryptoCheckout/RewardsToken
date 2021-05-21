@@ -27,8 +27,6 @@ npm install
 
 ## Flatten
 
-Flatten contracts
-
 ```bash
 npm run flat
 ```
