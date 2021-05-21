@@ -1,4 +1,6 @@
-// File: @openzeppelin/contracts/token/ERC20/IERC20.sol
+// Sources flattened with hardhat v2.3.0 https://hardhat.org
+
+// File @openzeppelin/contracts/token/ERC20/IERC20.sol@v4.1.0
 
 // SPDX-License-Identifier: MIT
 
@@ -78,9 +80,39 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-// File: @openzeppelin/contracts/utils/Context.sol
+
+// File @openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol@v4.1.0
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+/**
+ * @dev Interface for the optional metadata functions from the ERC20 standard.
+ *
+ * _Available since v4.1._
+ */
+interface IERC20Metadata is IERC20 {
+    /**
+     * @dev Returns the name of the token.
+     */
+    function name() external view returns (string memory);
+
+    /**
+     * @dev Returns the symbol of the token.
+     */
+    function symbol() external view returns (string memory);
+
+    /**
+     * @dev Returns the decimals places of the token.
+     */
+    function decimals() external view returns (uint8);
+}
 
 
+// File @openzeppelin/contracts/utils/Context.sol@v4.1.0
+
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
 
@@ -105,9 +137,10 @@ abstract contract Context {
     }
 }
 
-// File: @openzeppelin/contracts/token/ERC20/ERC20.sol
 
+// File @openzeppelin/contracts/token/ERC20/ERC20.sol@v4.1.0
 
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
 
@@ -137,7 +170,7 @@ pragma solidity ^0.8.0;
  * functions have been added to mitigate the well-known issues around setting
  * allowances. See {IERC20-approve}.
  */
-contract ERC20 is Context, IERC20 {
+contract ERC20 is Context, IERC20, IERC20Metadata {
     mapping (address => uint256) private _balances;
 
     mapping (address => mapping (address => uint256)) private _allowances;
@@ -153,7 +186,7 @@ contract ERC20 is Context, IERC20 {
      * The defaut value of {decimals} is 18. To select a different value for
      * {decimals} you should overload it.
      *
-     * All three of these values are immutable: they can only be set once during
+     * All two of these values are immutable: they can only be set once during
      * construction.
      */
     constructor (string memory name_, string memory symbol_) {
@@ -164,7 +197,7 @@ contract ERC20 is Context, IERC20 {
     /**
      * @dev Returns the name of the token.
      */
-    function name() public view virtual returns (string memory) {
+    function name() public view virtual override returns (string memory) {
         return _name;
     }
 
@@ -172,7 +205,7 @@ contract ERC20 is Context, IERC20 {
      * @dev Returns the symbol of the token, usually a shorter version of the
      * name.
      */
-    function symbol() public view virtual returns (string memory) {
+    function symbol() public view virtual override returns (string memory) {
         return _symbol;
     }
 
@@ -183,13 +216,13 @@ contract ERC20 is Context, IERC20 {
      *
      * Tokens usually opt for a value of 18, imitating the relationship between
      * Ether and Wei. This is the value {ERC20} uses, unless this function is
-     * overloaded;
+     * overridden;
      *
      * NOTE: This information is only used for _display_ purposes: it in
      * no way affects any of the arithmetic of the contract, including
      * {IERC20-balanceOf} and {IERC20-transfer}.
      */
-    function decimals() public view virtual returns (uint8) {
+    function decimals() public view virtual override returns (uint8) {
         return 18;
     }
 
@@ -410,12 +443,12 @@ contract ERC20 is Context, IERC20 {
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual { }
 }
 
-// File: @openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol
 
+// File @openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol@v4.1.0
 
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
-
 
 
 /**
@@ -452,9 +485,81 @@ abstract contract ERC20Burnable is Context, ERC20 {
     }
 }
 
-// File: @openzeppelin/contracts/utils/introspection/IERC165.sol
+
+// File @openzeppelin/contracts/utils/Strings.sol@v4.1.0
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+/**
+ * @dev String operations.
+ */
+library Strings {
+    bytes16 private constant alphabet = "0123456789abcdef";
+
+    /**
+     * @dev Converts a `uint256` to its ASCII `string` decimal representation.
+     */
+    function toString(uint256 value) internal pure returns (string memory) {
+        // Inspired by OraclizeAPI's implementation - MIT licence
+        // https://github.com/oraclize/ethereum-api/blob/b42146b063c7d6ee1358846c198246239e9360e8/oraclizeAPI_0.4.25.sol
+
+        if (value == 0) {
+            return "0";
+        }
+        uint256 temp = value;
+        uint256 digits;
+        while (temp != 0) {
+            digits++;
+            temp /= 10;
+        }
+        bytes memory buffer = new bytes(digits);
+        while (value != 0) {
+            digits -= 1;
+            buffer[digits] = bytes1(uint8(48 + uint256(value % 10)));
+            value /= 10;
+        }
+        return string(buffer);
+    }
+
+    /**
+     * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation.
+     */
+    function toHexString(uint256 value) internal pure returns (string memory) {
+        if (value == 0) {
+            return "0x00";
+        }
+        uint256 temp = value;
+        uint256 length = 0;
+        while (temp != 0) {
+            length++;
+            temp >>= 8;
+        }
+        return toHexString(value, length);
+    }
+
+    /**
+     * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation with fixed length.
+     */
+    function toHexString(uint256 value, uint256 length) internal pure returns (string memory) {
+        bytes memory buffer = new bytes(2 * length + 2);
+        buffer[0] = "0";
+        buffer[1] = "x";
+        for (uint256 i = 2 * length + 1; i > 1; --i) {
+            buffer[i] = alphabet[value & 0xf];
+            value >>= 4;
+        }
+        require(value == 0, "Strings: hex length insufficient");
+        return string(buffer);
+    }
+
+}
 
 
+// File @openzeppelin/contracts/utils/introspection/IERC165.sol@v4.1.0
+
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
 
@@ -479,12 +584,12 @@ interface IERC165 {
     function supportsInterface(bytes4 interfaceId) external view returns (bool);
 }
 
-// File: @openzeppelin/contracts/utils/introspection/ERC165.sol
 
+// File @openzeppelin/contracts/utils/introspection/ERC165.sol@v4.1.0
 
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
-
 
 /**
  * @dev Implementation of the {IERC165} interface.
@@ -509,9 +614,10 @@ abstract contract ERC165 is IERC165 {
     }
 }
 
-// File: @openzeppelin/contracts/access/AccessControl.sol
 
+// File @openzeppelin/contracts/access/AccessControl.sol@v4.1.0
 
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
 
@@ -604,6 +710,21 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
     event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender);
 
     /**
+     * @dev Modifier that checks that an account has a specific role. Reverts
+     * with a standardized message including the required role.
+     *
+     * The format of the revert reason is given by the following regular expression:
+     *
+     *  /^AccessControl: account (0x[0-9a-f]{20}) is missing role (0x[0-9a-f]{32})$/
+     *
+     * _Available since v4.1._
+     */
+    modifier onlyRole(bytes32 role) {
+        _checkRole(role, _msgSender());
+        _;
+    }
+
+    /**
      * @dev See {IERC165-supportsInterface}.
      */
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
@@ -616,6 +737,24 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
      */
     function hasRole(bytes32 role, address account) public view override returns (bool) {
         return _roles[role].members[account];
+    }
+
+    /**
+     * @dev Revert with a standard message if `account` is missing `role`.
+     *
+     * The format of the revert reason is given by the following regular expression:
+     *
+     *  /^AccessControl: account (0x[0-9a-f]{20}) is missing role (0x[0-9a-f]{32})$/
+     */
+    function _checkRole(bytes32 role, address account) internal view {
+        if(!hasRole(role, account)) {
+            revert(string(abi.encodePacked(
+                "AccessControl: account ",
+                Strings.toHexString(uint160(account), 20),
+                " is missing role ",
+                Strings.toHexString(uint256(role), 32)
+            )));
+        }
     }
 
     /**
@@ -638,9 +777,7 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
      *
      * - the caller must have ``role``'s admin role.
      */
-    function grantRole(bytes32 role, address account) public virtual override {
-        require(hasRole(getRoleAdmin(role), _msgSender()), "AccessControl: sender must be an admin to grant");
-
+    function grantRole(bytes32 role, address account) public virtual override onlyRole(getRoleAdmin(role)) {
         _grantRole(role, account);
     }
 
@@ -653,9 +790,7 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
      *
      * - the caller must have ``role``'s admin role.
      */
-    function revokeRole(bytes32 role, address account) public virtual override {
-        require(hasRole(getRoleAdmin(role), _msgSender()), "AccessControl: sender must be an admin to revoke");
-
+    function revokeRole(bytes32 role, address account) public virtual override onlyRole(getRoleAdmin(role)) {
         _revokeRole(role, account);
     }
 
@@ -724,9 +859,10 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
     }
 }
 
-// File: @openzeppelin/contracts/utils/structs/EnumerableSet.sol
 
+// File @openzeppelin/contracts/utils/structs/EnumerableSet.sol@v4.1.0
 
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
 
@@ -817,7 +953,7 @@ library EnumerableSet {
             // Move the last value to the index where the value to delete is
             set._values[toDeleteIndex] = lastvalue;
             // Update the index for the moved value
-            set._indexes[lastvalue] = toDeleteIndex + 1; // All indexes are 1-based
+            set._indexes[lastvalue] = valueIndex; // Replace lastvalue's index to valueIndex
 
             // Delete the slot where the moved value was stored
             set._values.pop();
@@ -1024,12 +1160,12 @@ library EnumerableSet {
     }
 }
 
-// File: @openzeppelin/contracts/access/AccessControlEnumerable.sol
 
+// File @openzeppelin/contracts/access/AccessControlEnumerable.sol@v4.1.0
 
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
-
 
 
 /**
@@ -1113,12 +1249,12 @@ abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessCon
     }
 }
 
-// File: contracts/RewardsToken.sol
 
+// File contracts/RewardsToken.sol
 
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
-
 
 
 

@@ -23,8 +23,8 @@ npm install
 
 ## Flatten
 
-For etherscan verification
+Flatten contracts
 
 ```bash
-npm run flatten
+npm run flat
 ```
