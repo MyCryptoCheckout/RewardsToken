@@ -19,8 +19,6 @@ The max supply of the token is 500,000,000 and each token is divisible up to 18 
   - Team Timelock 2 (releaseTime Unix 1686801600): [0x8d884f22c25Ca22481c84f9A797166b304577b50](https://etherscan.io/address/0x8d884f22c25Ca22481c84f9A797166b304577b50)
   - Team Timelock 3 (releaseTime Unix 1718424000): [0x51b90320ba8db0d0d2b8d62f0506cd85c0b90c68](https://etherscan.io/address/0x51b90320ba8db0d0d2b8d62f0506cd85c0b90c68)
 
-
-0x8d884f22c25Ca22481c84f9A797166b304577b50
 ## Installation
 
 ```bash
