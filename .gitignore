@@ -3,4 +3,4 @@
 npm-debug.log
 
 # Artifacts
-/contracts/artifacts/
+*/artifacts/
