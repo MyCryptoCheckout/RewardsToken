@@ -4,7 +4,7 @@
   "description": "rewards token",
   "main": "index.js",
   "scripts": {
-    "flat": "npx hardhat flatten ./contracts/RewardsToken.sol > ./flat/RewardsTokenFlat.sol && npx hardhat flatten ./contracts/RewardsTimelock.sol > ./flat/RewardsTimelockFlat.sol"
+    "flat": "npx hardhat flatten ./contracts/RewardsToken.sol > ./flat/RewardsTokenFlat.sol && npx hardhat flatten ./contracts/RewardsTimelock.sol > ./flat/RewardsTimelockFlat.sol && npx hardhat flatten ./contracts/BEP20Token.sol > ./flat/BEP20TokenFlat.sol"
   },
   "author": "jjs2484",
   "license": "MIT",
