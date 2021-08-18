@@ -2,7 +2,7 @@
 
 Rewards (RWD) is an Cross-Chain [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) / [BEP20](https://github.com/binance-chain/BEPs/blob/master/BEP20.md) token with additional functionality including minting and burning.
 
-The max supply of the token is 500,000,000 and each token is divisible up to 18 decimal places.
+The total supply of the token is 210,770,198 and each token is divisible up to 18 decimal places.
 
 ## Details
 
