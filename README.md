@@ -19,6 +19,8 @@ The total supply of the token is 210,770,198 and each token is divisible up to 1
 
 ## Installation
 
+Add dependencies: Openzeppelin, Truffle, Hardhat.
+
 ```bash
 npm install
 ```
