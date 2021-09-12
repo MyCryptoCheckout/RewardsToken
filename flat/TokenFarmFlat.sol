@@ -637,7 +637,7 @@ contract TokenFarm is ReentrancyGuard {
 
         for (uint256 i = 0; i < stakers.length; i++) {
             address activeStakerCount = stakers[i];
-            if (activeStakerCount != owner) {
+            if (activeStakerCount != owner && isStaking[activeStakerCount] == true) {
                 count = count + 1;
             }
         }
