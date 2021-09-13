@@ -673,8 +673,9 @@ contract TokenFarm is ReentrancyGuard {
             address recipient = stakers[i];
             uint256 balance = stakingBalance[recipient];
             
-            // 21% / 52 weeks = .403 * 100000
-            uint256 yield = SafeMath.add(SafeMath.div(SafeMath.mul(balance, 403), 100000), balance);
+            // 365 days / 30 = 12.166666667 30 day intervals in a year
+            // 21% yearly APY / 12.166666667 intervals=1.726
+            uint256 yield = SafeMath.add(SafeMath.div(SafeMath.mul(balance, 1726), 100000), balance);
             
             // Calculate staking time based on current block
             uint256 end = block.timestamp;
@@ -683,9 +684,9 @@ contract TokenFarm is ReentrancyGuard {
             // Balance is not 0 and exclude owner
             if (balance > 0 && recipient != owner) {
                 
-                // Staking for more than 7 days in seconds 604800
+                // Staking for more than 30 days in seconds 2592000
                 // For testing 20 minutes 1200
-                if (totalTime > 1200) {
+                if (totalTime > 2592000) {
                     
                     // Add APY staking interest to existing balance
                     stakingBalance[recipient] = yield;
